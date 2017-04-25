@@ -27,7 +27,21 @@ bot.onEvent = function(session, message) {
 }
 
 function onMessage(session, message) {
+  if(message.content.body.includes('beg')){
+    session.requestEth(3.50, 'I need about three fiddy');
+  }
+  if (message.content.body.includes('ether')) {
+    session.reply(SOFA.Message({
+      body: "Here is your logo!",
+      attachments: [{
+        "type": "image",
+        "url": "ethereum.jpg"
+      }]
+    }))
+    return
+  }
   welcome(session)
+
 }
 
 function onCommand(session, command) {
@@ -51,7 +65,7 @@ function onPayment(session) {
 // STATES
 
 function welcome(session) {
-  sendMessage(session, `Hello Token!`)
+  sendMessage(session, `Hello Token World!`)
 }
 
 function pong(session) {
